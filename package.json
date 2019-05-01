@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:webpack": "webpack",
+    "watch:webpack": "webpack --mode development",
     "watch:watch": "watch \" npm run watch:webpack\" ./src",
     "watch": "npm-run-all watch:*"
   },
