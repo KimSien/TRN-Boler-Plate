@@ -1,0 +1,14 @@
+# Develop
+node_modules/
+
+# Work and Draft
+readmework.md
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
