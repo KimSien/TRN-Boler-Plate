@@ -99,9 +99,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const ReactDOM = __webpack_require__(/*! react-dom */ "react-dom");
 const Hello_1 = __webpack_require__(/*! ./component/Hello */ "./src/component/Hello.tsx");
-let num;
-num = 1;
-console.log(num);
 ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
 
 
@@ -124,7 +121,6 @@ exports.Hello = (props) => React.createElement("h1", null,
     " and ",
     props.framework,
     "!");
-console.log("test");
 
 
 /***/ }),

@@ -16,6 +16,8 @@ $ export PATH=$PATH:./node_modules/.bin
 https://qiita.com/minase_tetsuya/items/986feac7150ed74e13d8
 
 
+1-3 watchの処理一部修正
+
 
 
 こちら再度確認

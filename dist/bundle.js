@@ -103,7 +103,6 @@ exports.Hello = (props) => React.createElement("h1", null,
     " and ",
     props.framework,
     "!");
-console.log("test");
 
 
 /***/ }),
