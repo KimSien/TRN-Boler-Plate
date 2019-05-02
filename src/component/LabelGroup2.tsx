@@ -2,11 +2,11 @@ import * as React from "react";
 
 import { LabelText } from "./LabelText";
 import { LabelSelectmap } from "./LabelSelectmap";
-import {fetchResponse2} from "../minisample/TestAjax2";
+//import {fetchResponse2} from "../minisample/TestAjax2";
 
 
 interface STATE{
-    question: string;
+    questions: any;
 }
 
 interface PROPS{
@@ -17,16 +17,19 @@ interface PROPS{
 export class LabelGroup2 extends React.Component<{},STATE,PROPS>{
 
     public state: STATE = {
-        question: "question start"    
+        questions: [{ title: "question start"}]
     }
     
     componentDidMount(){
+       
         //https://qiita.com/u_dapon/items/4609a72aab5f469485d9
+       
         /*
         this.setState({
             question : "change question desu"
         });
         */
+
         return fetch('/data/db2.json')
         .then( res => {
         return res.json();
@@ -34,7 +37,7 @@ export class LabelGroup2 extends React.Component<{},STATE,PROPS>{
         .then( res => {
         
         this.setState({
-            question : res.todos[0].title
+            questions : res.todos
             //question : "change question desu"
         });
 
@@ -49,12 +52,28 @@ export class LabelGroup2 extends React.Component<{},STATE,PROPS>{
 
         const buttons = "質問の問題";
         
+        const PackBlock = this.state.questions.map((value :any, index :any) => {
+            
+            console.log(value);
+
+            return (
+                <div className="text" data-button={index}>
+
+                    <LabelText myQuestion={value.title} />
+
+                    <LabelSelectmap data={selections} />
+            
+                    <LabelText myQuestion={buttons} />
+
+                </div>
+            );
+        });
+
+
         return (
          <div className="parents">
-            <LabelText myQuestion={this.state.question} />
-            <LabelSelectmap data={selections} />
-
-            <LabelText myQuestion={buttons} />
+            
+            {PackBlock}
 
         </div>
     );

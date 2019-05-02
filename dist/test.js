@@ -86,106 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/component/Basic.tsx":
-/*!*********************************!*\
-  !*** ./src/component/Basic.tsx ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// prop only
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-class Basic extends React.Component {
-    /*
-    constructor(props :any){
-        super(props);
-        this.state={
-            value: null,
-        };
-    }
-    */
-    render() {
-        const value = this.props.value;
-        return (React.createElement("button", { className: "square", onClick: () => alert('click') }, value));
-    }
-}
-exports.Basic = Basic;
-
-
-/***/ }),
-
-/***/ "./src/component/Basic2.tsx":
-/*!**********************************!*\
-  !*** ./src/component/Basic2.tsx ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// prop & state
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-class Basic2 extends React.Component {
-    constructor() {
-        super(...arguments);
-        /*
-        constructor(props :any){
-            super(props);
-            this.state={
-                value: null,
-            };
-        }
-        */
-        this.state = {
-            myNameIs: 'namedesu',
-        };
-    }
-    render() {
-        return (React.createElement("button", { className: "square", onClick: () => alert('click') }, this.state.myNameIs));
-    }
-}
-exports.Basic2 = Basic2;
-
-
-/***/ }),
-
-/***/ "./src/component/Basic3.tsx":
-/*!**********************************!*\
-  !*** ./src/component/Basic3.tsx ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// prop & state
-// https://stackoverflow.com/questions/52249390/property-xyz-does-not-exist-on-type-readonly-children-reactnode-rea
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-class Basic3 extends React.Component {
-    constructor() {
-        super(...arguments);
-        this.state = {
-            myNameIs: 'namedesu',
-        };
-    }
-    render() {
-        const value = this.props.value;
-        return (React.createElement("div", null,
-            "this is ",
-            this.state.myNameIs,
-            React.createElement("button", { className: "square", onClick: () => alert('click') }, value)));
-    }
-}
-exports.Basic3 = Basic3;
-
-
-/***/ }),
-
 /***/ "./src/component/Hello.tsx":
 /*!*********************************!*\
   !*** ./src/component/Hello.tsx ***!
@@ -207,35 +107,6 @@ exports.Hello = (props) => React.createElement("h1", null,
 
 /***/ }),
 
-/***/ "./src/component/LabelGroup.tsx":
-/*!**************************************!*\
-  !*** ./src/component/LabelGroup.tsx ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-const LabelText_1 = __webpack_require__(/*! ./LabelText */ "./src/component/LabelText.tsx");
-const LabelSelectmap_1 = __webpack_require__(/*! ./LabelSelectmap */ "./src/component/LabelSelectmap.tsx");
-class LabelGroup extends React.Component {
-    render() {
-        const selections = ['選択１', '選択２', '選択３', '選択４'];
-        const question = "質問の問題";
-        const buttons = "質問の問題";
-        return (React.createElement("div", { className: "parents" },
-            React.createElement(LabelText_1.LabelText, { myQuestion: question }),
-            React.createElement(LabelSelectmap_1.LabelSelectmap, { data: selections }),
-            React.createElement(LabelText_1.LabelText, { myQuestion: buttons })));
-    }
-}
-exports.LabelGroup = LabelGroup;
-
-
-/***/ }),
-
 /***/ "./src/component/LabelGroup2.tsx":
 /*!***************************************!*\
   !*** ./src/component/LabelGroup2.tsx ***!
@@ -253,7 +124,7 @@ class LabelGroup2 extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            question: "question start"
+            questions: [{ title: "question start" }]
         };
     }
     componentDidMount() {
@@ -269,7 +140,7 @@ class LabelGroup2 extends React.Component {
         })
             .then(res => {
             this.setState({
-                question: res.todos[0].title
+                questions: res.todos
                 //question : "change question desu"
             });
         });
@@ -278,35 +149,17 @@ class LabelGroup2 extends React.Component {
         const selections = ['選択１', '選択２', '選択３', '選択４'];
         //const question = "質問の問題";
         const buttons = "質問の問題";
-        return (React.createElement("div", { className: "parents" },
-            React.createElement(LabelText_1.LabelText, { myQuestion: this.state.question }),
-            React.createElement(LabelSelectmap_1.LabelSelectmap, { data: selections }),
-            React.createElement(LabelText_1.LabelText, { myQuestion: buttons })));
+        const PackBlock = this.state.questions.map((value, index) => {
+            console.log(value);
+            return (React.createElement("div", { className: "text", "data-button": index },
+                React.createElement(LabelText_1.LabelText, { myQuestion: value.title }),
+                React.createElement(LabelSelectmap_1.LabelSelectmap, { data: selections }),
+                React.createElement(LabelText_1.LabelText, { myQuestion: buttons })));
+        });
+        return (React.createElement("div", { className: "parents" }, PackBlock));
     }
 }
 exports.LabelGroup2 = LabelGroup2;
-
-
-/***/ }),
-
-/***/ "./src/component/LabelSelect.tsx":
-/*!***************************************!*\
-  !*** ./src/component/LabelSelect.tsx ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-class LabelSelect extends React.Component {
-    render() {
-        const ButtonLabel = this.props.ButtonLabel;
-        return (React.createElement("button", { className: "text" }, ButtonLabel));
-    }
-}
-exports.LabelSelect = LabelSelect;
 
 
 /***/ }),
@@ -357,41 +210,6 @@ exports.LabelText = LabelText;
 
 /***/ }),
 
-/***/ "./src/minisample/TestAjax.tsx":
-/*!*************************************!*\
-  !*** ./src/minisample/TestAjax.tsx ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// refs
-// https://www.yoheim.net/blog.php?q=20170107
-Object.defineProperty(exports, "__esModule", { value: true });
-function fetchResponse() {
-    fetch('/data/db.json')
-        .then(res => {
-        //console.log(res.json());   
-        //console.log(1);     
-        return res.json();
-    })
-        .then(res => {
-        console.log(2);
-        console.log(res);
-        console.log(res.todos[0]);
-        /*this.setState({
-          todo : res
-        });
-        */
-    });
-}
-exports.fetchResponse = fetchResponse;
-//fetchResponse();
-
-
-/***/ }),
-
 /***/ "./src/test.tsx":
 /*!**********************!*\
   !*** ./src/test.tsx ***!
@@ -412,25 +230,54 @@ ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", fra
  *
  */
 //1 fetch(ajax) & function import
-const TestAjax_1 = __webpack_require__(/*! ./minisample/TestAjax */ "./src/minisample/TestAjax.tsx");
-TestAjax_1.fetchResponse();
+//import {fetchResponse} from "./minisample/TestAjax";
+//fetchResponse();
 //2 prop
-const Basic_1 = __webpack_require__(/*! ./component/Basic */ "./src/component/Basic.tsx");
-ReactDOM.render(React.createElement(Basic_1.Basic, { value: "1" }), document.getElementById("basic"));
+/*
+import { Basic } from "./component/Basic";
+ReactDOM.render(
+    <Basic value="1" />,
+    document.getElementById("basic")
+);
+*/
 //3 state
-const Basic2_1 = __webpack_require__(/*! ./component/Basic2 */ "./src/component/Basic2.tsx");
-ReactDOM.render(React.createElement(Basic2_1.Basic2, null), document.getElementById("basic2"));
+/*
+import { Basic2 } from "./component/Basic2";
+ReactDOM.render(
+    <Basic2 />,
+    document.getElementById("basic2")
+);
+*/
 //3 state & prop
-const Basic3_1 = __webpack_require__(/*! ./component/Basic3 */ "./src/component/Basic3.tsx");
-ReactDOM.render(React.createElement(Basic3_1.Basic3, { value: "test" }), document.getElementById("basic3"));
+/*
+import { Basic3 } from "./component/Basic3";
+ReactDOM.render(
+    <Basic3 value="test" />,
+    document.getElementById("basic3")
+);
+*/
 //4 compornent + compornent
-const LabelText_1 = __webpack_require__(/*! ./component/LabelText */ "./src/component/LabelText.tsx");
-ReactDOM.render(React.createElement(LabelText_1.LabelText, { myQuestion: "test" }), document.getElementById("test1"));
-const LabelSelect_1 = __webpack_require__(/*! ./component/LabelSelect */ "./src/component/LabelSelect.tsx");
-ReactDOM.render(React.createElement(LabelSelect_1.LabelSelect, { ButtonLabel: "test" }), document.getElementById("test2"));
+/*
+import { LabelText } from "./component/LabelText";
+ReactDOM.render(
+    <LabelText myQuestion="test" />,
+    document.getElementById("test1")
+);
+
+import { LabelSelect } from "./component/LabelSelect";
+ReactDOM.render(
+    <LabelSelect ButtonLabel="test" />,
+    document.getElementById("test2")
+);
+*/
 //4 compornent + compornent
-const LabelGroup_1 = __webpack_require__(/*! ./component/LabelGroup */ "./src/component/LabelGroup.tsx");
-ReactDOM.render(React.createElement(LabelGroup_1.LabelGroup, null), document.getElementById("group1"));
+/*
+import { LabelGroup } from "./component/LabelGroup";
+ReactDOM.render(
+    <LabelGroup />,
+    document.getElementById("group1")
+);
+*/
 //５ compornent + compornent
 const LabelGroup2_1 = __webpack_require__(/*! ./component/LabelGroup2 */ "./src/component/LabelGroup2.tsx");
 ReactDOM.render(React.createElement(LabelGroup2_1.LabelGroup2, null), document.getElementById("group2"));
