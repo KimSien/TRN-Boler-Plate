@@ -103,7 +103,8 @@ class LabelGroup3 extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            questions: [{ title: "question start", select: [{ title: "test" }] }]
+            questions: [{ title: "question start", select: [{ title: "test" }] }],
+            slidestatus: 0
             //questions: [{ title: "question start",select:[{title: "test"}]}]
         };
     }
@@ -116,18 +117,37 @@ class LabelGroup3 extends React.Component {
         })
             .then(res => {
             this.setState({
-                questions: res.todos
+                questions: res.todos,
+                slidestatus: 1
             });
+        });
+    }
+    handleChangeState() {
+        console.log("click handlechangeState");
+        this.setState({
+            slidestatus: 0
         });
     }
     render() {
         const buttons = "質問の問題";
-        const PackBlock = this.state.questions.map((value, index) => {
+        /*
+        const PackBlock = this.state.questions.map((value :any, index :any) => {
             console.log(value);
-            return (React.createElement("div", { className: "text", "data-button": index },
-                React.createElement(LabelText_1.LabelText, { myQuestion: value.title }),
-                React.createElement(LabelSelectmap2_1.LabelSelectmap2, { data: value.select })));
+            return (
+                <div className="text" data-button={index}>
+                    <LabelText myQuestion={value.title} />
+                    <LabelSelectmap2 data={value.select} />
+                    {this.state.slidestatus}
+                </div>
+            );
         });
+        */
+        // 親子 state変更
+        // https://qiita.com/w-tdon/items/7b0f72a3b0a3e0708741
+        const PackBlock = React.createElement("div", { className: "text", "data-button": this.state.slidestatus },
+            React.createElement(LabelText_1.LabelText, { myQuestion: this.state.questions[this.state.slidestatus].title }),
+            React.createElement(LabelSelectmap2_1.LabelSelectmap2, { data: this.state.questions[this.state.slidestatus].select, slidestatus: () => { this.handleChangeState(); } }),
+            this.state.slidestatus);
         return (React.createElement("div", { className: "parents" }, PackBlock));
     }
 }
@@ -148,9 +168,22 @@ exports.LabelGroup3 = LabelGroup3;
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 class LabelSelectmap2 extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.state = {
+            slidestatus: 0,
+        };
+    }
+    handleClick() {
+        console.log("click button");
+        //this.state.slidestatus = 1;
+        return this.props.slidestatus();
+    }
     render() {
+        //https://qiita.com/koba04/items/a4d23245d246c53cd49d
+        // key　について
         const ButtonLabel = this.props.data.map((value, index) => {
-            return (React.createElement("button", { className: "text", "data-button": index }, value.title));
+            return (React.createElement("button", { className: "text", key: index, onClick: () => { this.handleClick(); } }, value.title));
         });
         return (React.createElement("li", null, ButtonLabel));
     }
