@@ -120,8 +120,6 @@ class LabelGroup3 extends React.Component {
         });
     }
     render() {
-        //const selections = ['選択１', '選択２', '選択３', '選択４'];
-        //const question = "質問の問題";
         const buttons = "質問の問題";
         const PackBlock = this.state.questions.map((value, index) => {
             console.log(value);
