@@ -9,7 +9,7 @@ import { LabelSelectmap2 } from "./LabelSelectmap2";
 
 interface STATE{
     questions: any;
-    slidestatus: number;
+    slidestatus: any;
 }
 
 interface PROPS{
@@ -42,17 +42,28 @@ export class LabelGroup3 extends React.Component<{},STATE,PROPS>{
 
     }
 
-    handleChangeState(){
-        console.log("click handlechangeState");
+
+    handleChangeState(a? :any){
+        //console.log("click handlechangeState");
+        
+        console.log(a);
+        //this.state.slidestatus = a;
+ 
+        this.setState(a);
+        /*
         this.setState({
-            slidestatus: 0
+            slidestatus: 2
         });
+        */
+        
     }
 
     public render(){
         
         const buttons = "質問の問題";
-        
+
+        const a = this.state.slidestatus;
+
         /*
         const PackBlock = this.state.questions.map((value :any, index :any) => {
             console.log(value);
@@ -66,13 +77,20 @@ export class LabelGroup3 extends React.Component<{},STATE,PROPS>{
         });
         */
 
+        //const a = this.state.slidestatus;
+
         // 親子 state変更
         // https://qiita.com/w-tdon/items/7b0f72a3b0a3e0708741
+
+        // http://shibe23.hatenablog.com/entry/2018/07/29/233005
+
+//        <LabelSelectmap2 data={this.state.questions[this.state.slidestatus].select} slidestatus={()=>{this.handleChangeState(a)}} />
 
        const PackBlock = 
             <div className="text" data-button={this.state.slidestatus}>
                 <LabelText myQuestion={this.state.questions[this.state.slidestatus].title} />
-                <LabelSelectmap2 data={this.state.questions[this.state.slidestatus].select} slidestatus={()=>{this.handleChangeState();}} />
+                <LabelSelectmap2 data={this.state.questions[this.state.slidestatus].select} slidestatus={this.state.slidestatus} slidestatusfunc={ (a :any)=>{this.handleChangeState(a);}} />
+
                 {this.state.slidestatus}
             </div>
 

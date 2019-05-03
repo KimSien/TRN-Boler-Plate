@@ -5,10 +5,10 @@
         "title": "JavaScript覚える",
         "select": [
           {
-            "next": 2,
+            "next": 1,
           "title": "select 1" 
           },{ 
-          "next": 3,
+          "next": 2,
           "title": "select 2" 
           }
         ]
@@ -22,6 +22,19 @@
           "title": "select 1" 
           },{ 
           "next": 3,
+          "title": "select 2" 
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "React覚える",
+        "select": [
+          {
+            "next": 2,
+          "title": "select 1" 
+          },{ 
+          "next": 1,
           "title": "select 2" 
           }
         ]

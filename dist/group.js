@@ -122,14 +122,20 @@ class LabelGroup3 extends React.Component {
             });
         });
     }
-    handleChangeState() {
-        console.log("click handlechangeState");
+    handleChangeState(a) {
+        //console.log("click handlechangeState");
+        console.log(a);
+        //this.state.slidestatus = a;
+        this.setState(a);
+        /*
         this.setState({
-            slidestatus: 0
+            slidestatus: 2
         });
+        */
     }
     render() {
         const buttons = "質問の問題";
+        const a = this.state.slidestatus;
         /*
         const PackBlock = this.state.questions.map((value :any, index :any) => {
             console.log(value);
@@ -142,11 +148,14 @@ class LabelGroup3 extends React.Component {
             );
         });
         */
+        //const a = this.state.slidestatus;
         // 親子 state変更
         // https://qiita.com/w-tdon/items/7b0f72a3b0a3e0708741
+        // http://shibe23.hatenablog.com/entry/2018/07/29/233005
+        //        <LabelSelectmap2 data={this.state.questions[this.state.slidestatus].select} slidestatus={()=>{this.handleChangeState(a)}} />
         const PackBlock = React.createElement("div", { className: "text", "data-button": this.state.slidestatus },
             React.createElement(LabelText_1.LabelText, { myQuestion: this.state.questions[this.state.slidestatus].title }),
-            React.createElement(LabelSelectmap2_1.LabelSelectmap2, { data: this.state.questions[this.state.slidestatus].select, slidestatus: () => { this.handleChangeState(); } }),
+            React.createElement(LabelSelectmap2_1.LabelSelectmap2, { data: this.state.questions[this.state.slidestatus].select, slidestatus: this.state.slidestatus, slidestatusfunc: (a) => { this.handleChangeState(a); } }),
             this.state.slidestatus);
         return (React.createElement("div", { className: "parents" }, PackBlock));
     }
@@ -171,19 +180,22 @@ class LabelSelectmap2 extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            slidestatus: 0,
+        //slidestatus: 0,
         };
     }
-    handleClick() {
-        console.log("click button");
+    handleClick(a) {
+        //console.log(a);
         //this.state.slidestatus = 1;
-        return this.props.slidestatus();
+        return this.props.slidestatusfunc({ slidestatus: a });
     }
     render() {
         //https://qiita.com/koba04/items/a4d23245d246c53cd49d
         // key　について
+        //<button className="text" data-int={value.next} key={index} onClick={()=>{this.props.slidestatusfunc(value.next)}}>
         const ButtonLabel = this.props.data.map((value, index) => {
-            return (React.createElement("button", { className: "text", key: index, onClick: () => { this.handleClick(); } }, value.title));
+            return (React.createElement("button", { className: "text", "data-int": value.next, key: index, onClick: () => { this.handleClick(value.next); } },
+                value.title,
+                this.props.slidestatus));
         });
         return (React.createElement("li", null, ButtonLabel));
     }
