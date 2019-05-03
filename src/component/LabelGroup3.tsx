@@ -4,7 +4,6 @@ import { LabelText } from "./LabelText";
 import { LabelSelectmap2 } from "./LabelSelectmap2";
 //import {fetchResponse2} from "../minisample/TestAjax2";
 
-
 interface STATE{
     questions: any;
 }
@@ -12,12 +11,12 @@ interface STATE{
 interface PROPS{
 }
 
-
-
 export class LabelGroup3 extends React.Component<{},STATE,PROPS>{
 
     public state :STATE = {
         questions: [{ title: "question start",select:[{title: "test"}]}]
+
+        //questions: [{ title: "question start",select:[{title: "test"}]}]
     }
 
         

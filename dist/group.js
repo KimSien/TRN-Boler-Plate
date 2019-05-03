@@ -104,6 +104,7 @@ class LabelGroup3 extends React.Component {
         super(...arguments);
         this.state = {
             questions: [{ title: "question start", select: [{ title: "test" }] }]
+            //questions: [{ title: "question start",select:[{title: "test"}]}]
         };
     }
     componentDidMount() {
