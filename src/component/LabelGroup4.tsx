@@ -66,7 +66,7 @@ export class LabelGroup4 extends React.Component<{},STATE,PROPS>{
          <div className="parents">
             {PackBlock}
         </div>
-    );
+        );
     }
 
 }
