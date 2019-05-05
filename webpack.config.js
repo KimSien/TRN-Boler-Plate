@@ -4,7 +4,9 @@ module.exports = {
         admin: "./src/admin.tsx",
         test: "./src/test.tsx",
         group: "./src/group.tsx",
-        group2: "./src/group2.tsx"
+        group2: "./src/group2.tsx",
+        index2: "./src/index2.tsx"
+
     },
     output: {
         filename: "[name].js",
