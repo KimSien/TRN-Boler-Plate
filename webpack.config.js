@@ -6,7 +6,9 @@ module.exports = {
         group: "./src/group.tsx",
         group2: "./src/group2.tsx",
         index2: "./src/index2.tsx",
-        index3: "./src/index3.tsx"
+        index3: "./src/index3.tsx",
+        index4: "./src/index4.tsx"
+
 
     },
     output: {
