@@ -3584,8 +3584,6 @@ exports.Hello = (props) => React.createElement("h1", null,
 Object.defineProperty(exports, "__esModule", { value: true });
 //import React from 'react';
 const React = __webpack_require__(/*! react */ "react");
-//reduxやactionsをimportしていない。→ 必要なモノは親から全てprops経由で受け取っている
-// https://stackoverflow.com/questions/53851828/ts2740-type-is-missing-the-following-properties-from-readonlymyinterface-error
 class App extends React.Component {
     render() {
         return (React.createElement("div", null,
@@ -3642,18 +3640,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const ReactDOM = __webpack_require__(/*! react-dom */ "react-dom");
 const Hello_1 = __webpack_require__(/*! ./component/Hello */ "./src/component/Hello.tsx");
-//https://qiita.com/IzumiSy/items/b7d8a96eacd2cd8ad510
-// react redux typescript
-// https://qiita.com/toshi1127/items/37924faba5d57f397905
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const configureStore_1 = __webpack_require__(/*! ./store/configureStore */ "./src/store/configureStore.tsx");
 const app_1 = __webpack_require__(/*! ./containers/app */ "./src/containers/app.tsx");
-ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
+ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("hello"));
 const store = configureStore_1.configureStore();
 ReactDOM.render(
 //ストアを作ってproviderに渡す。
 React.createElement(react_redux_1.Provider, { store: store },
-    React.createElement(app_1.default, null)), document.getElementById('root'));
+    React.createElement(app_1.default, null)), document.getElementById('app'));
 
 
 /***/ }),

@@ -2,6 +2,7 @@
 
 Typescript & React and task by npm-script
 
+Include sample hello & redux.
 
 
 # Reference

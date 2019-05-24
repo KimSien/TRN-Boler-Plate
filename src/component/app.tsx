@@ -9,10 +9,7 @@ interface PROPS{
 
 interface STATES{}
 
-//reduxやactionsをimportしていない。→ 必要なモノは親から全てprops経由で受け取っている
-// https://stackoverflow.com/questions/53851828/ts2740-type-is-missing-the-following-properties-from-readonlymyinterface-error
 export default class App extends React.Component<any,PROPS,STATES>{
-
 
     render() {
     
