@@ -23,3 +23,39 @@ watch
 
 - [refs](https://www.wakuwakubank.com/posts/619-javascript-storybook/)
 - [refs](https://qiita.com/gaaamii/items/d2e3d7769719a5973261)
+
+## 4  jest test
+
+https://jestjs.io/docs/ja/getting-started
+
+typescript jest
+https://wp-kyoto.net/testing-typescript-by-jest
+
+npm i -D jest ts-jest @types/jest typescript
+
+add config packagejson 
+```
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ]
+  },
+  ```
+    add directory 
+    __tests__
+
+
+
