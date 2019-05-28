@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:webpack": "webpack --mode development",
     "watch:watch": "watch \" npm run watch:webpack\" ./src",
-    "watch": "npm-run-all watch:*"
+    "watch": "npm-run-all watch:*",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +34,12 @@
     "source-map-loader": "^0.2.4",
     "typescript": "^3.4.5",
     "watch": "^1.0.2",
-    "webpack-cli": "^3.3.1"
+    "webpack-cli": "^3.3.1",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6"
   }
 }

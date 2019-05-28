@@ -19,3 +19,7 @@ watch
 [watch](https://www.npmjs.com/package/watch)
 
 
+## 3 story
+
+- [refs](https://www.wakuwakubank.com/posts/619-javascript-storybook/)
+- [refs](https://qiita.com/gaaamii/items/d2e3d7769719a5973261)
