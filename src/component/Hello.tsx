@@ -1,5 +1,8 @@
 import * as React from "react";
 
+//import '@babel/polyfill';
+//Promise.resolve();
+
 export interface HelloProps { compiler: string; framework: string; }
 
 export const Hello = (props: HelloProps) => 

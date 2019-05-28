@@ -12,7 +12,6 @@ storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo(
 
 storiesOf('Button', module)
   .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with text', () => <Hello compiler="TypeScript" framework="React" />)
 
   .add('with some emoji', () => (
     <Button onClick={action('clicked')}>
@@ -21,3 +20,6 @@ storiesOf('Button', module)
       </span>
     </Button>
   ));
+
+storiesOf('Hello',module)
+  .add('with hello', () => <Hello compiler="TypeScript" framework="React" />)
