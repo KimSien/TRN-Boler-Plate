@@ -23,3 +23,15 @@ storiesOf('Button', module)
 
 storiesOf('Hello',module)
   .add('with hello', () => <Hello compiler="TypeScript" framework="React" />)
+
+import { Provider } from 'react-redux';
+
+import App from '../src/containers/app';
+import { configureStore } from '../src/store/configureStore';
+
+const store = configureStore();
+
+storiesOf('App',module)
+  .add('with App',() =>   <Provider store={store}>
+  <App />
+</Provider>)
